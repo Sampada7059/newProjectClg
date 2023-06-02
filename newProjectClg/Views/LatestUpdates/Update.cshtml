@@ -1,0 +1,45 @@
+﻿@model IEnumerable<newProjectClg.Models.LatestUpdate>
+@{
+    ViewBag.Title = "Index";
+}
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+</head>
+<div>
+    @Html.Partial("_Create", new newProjectClg.Models.LatestUpdate())
+</div>
+
+<body>
+    <br />
+    <div class="updates">
+        <h4 style="color: #28104E;">Latest Updates</h4>
+        <table  style="background-color: whitesmoke;">
+            <thead>
+                <tr>
+
+                    <th scope="colgroup">Information</th>
+                    <th scope="col">Created by</th>
+                </tr>
+            </thead>
+            <tbody class="table-hover">
+                
+                @foreach (var item in Model)
+                {
+                    DateTime updatedDate = Convert.ToDateTime(item.Created_Date);
+                    if (updatedDate.Date == DateTime.Today)
+                    {
+                        <tr>
+
+                            <td><b>@Html.DisplayFor(a => item.Information)</b></td>
+                            <td><b>@Html.DisplayFor(a => item.Createdby)</b></td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+    </div>
+</body>
+
+</html>

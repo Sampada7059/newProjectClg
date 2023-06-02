@@ -1,0 +1,41 @@
+﻿@model newProjectClg.Models.LatestUpdate
+
+@using (Html.BeginForm("Update", "LatestUpdates", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+ <html>
+    <head>
+        <link rel="stylesheet" href="~/Content/Site.css">
+    </head>
+
+    <body>
+        <div class="form-horizontal">
+            <br />
+            <h4 style="color: #28104E;">Enter Your Updates</h4>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="container">
+                <div class="form-group">
+                    <div class="flex-container">
+                        <div class="textarea-container">
+                            @Html.TextAreaFor(model => model.Information, new { @class = "form-control", placeholder = "Enter your information here..." })
+                            @Html.ValidationMessageFor(model => model.Information, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="button-container">
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Createdby, htmlAttributes: new { style = "display: none;" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Createdby, new { htmlAttributes = new { style = "display: none;", Value = "10".ToString() } })
+                </div>
+            </div>
+        </div>
+    </body>
+ </html>
+}
+
+
